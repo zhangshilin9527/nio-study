@@ -2,11 +2,14 @@ package com.xiaolinzi.nio.study.nio.study.nio;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author xiaolinzi
@@ -25,7 +28,12 @@ public class NIOServer {
         // 设置ServerSocketChannel为非阻塞
         serverSocket.configureBlocking(false);
         System.out.println("服务启动成功");
-
+//        Selector selector = Selector.open();
+//        selector.select();
+//        Set<SelectionKey> selectionKeys = selector.selectedKeys();
+//        for (SelectionKey selectionKey : selectionKeys) {
+//
+//        }
         while (true) {
             // 非阻塞模式accept方法不会阻塞，否则会阻塞
             SocketChannel socketChannel = serverSocket.accept();
